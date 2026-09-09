@@ -38,8 +38,8 @@ The framework currently assumes a mid-to-large enterprise with a Legal function,
 | B5 | Does an existing model risk management function (e.g. SR 11-7) already exist that this should integrate with rather than duplicate? | `OPEN` |
 | B6 | Is there an existing risk taxonomy or severity scale this should align to instead of introducing its own? | **`PARTIAL`** — `risk_level` exists in the PAIOS agent-definition schema; values not yet seen |
 | B7 | Two architectures found — relationship? | **`CLOSED` (author, 2026-09-09):** Stack B is a **separate design level**, to be built when the author's equipment can support a local build. Neither supersedes the other. Stack A (Microsoft 365, cloud-first) is the **active path**; Stack B is **deferred design pending hardware** |
-| B9 | Does any Stack B code exist yet, or is it entirely design-level pending hardware? The `CURRENT_STATE_MATRIX` template enumerates components as though tracked — are those built, partially built, or planned? | `OPEN` |
 | B8 | Stack B has **Purpose Binding** and **deny precedence** in policy evaluation. Neither is in this framework. Where are they specified? | `OPEN` — design-level concepts. Governance-layer constructs are **portable across both stacks**, so these should inform this framework now, not wait on hardware |
+| B9 | Does any Stack B code exist yet, or is it entirely design-level pending hardware? The `CURRENT_STATE_MATRIX` template enumerates components as though tracked — are those built, partially built, or planned? | `OPEN` |
 
 ## C. Calibration — every threshold in the repo is a placeholder
 
