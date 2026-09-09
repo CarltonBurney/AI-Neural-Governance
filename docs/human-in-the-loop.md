@@ -23,7 +23,7 @@ These are not a maturity ladder. HITL is not "better" than HOTL — it is more e
 | | T3 Minimal | T2 Limited | T1 High |
 |---|---|---|---|
 | Minimum pattern | Human-in-command | Human-on-the-loop | Human-in-the-loop |
-| Individual output review | Not required | Sampled, ≥5% | 100% before effect |
+| Individual output review | Not required | Sampled `[CALIBRATE]` | 100% before effect |
 | Reviewer named and trained | — | Required | Required, with documented competency |
 | Reviewer can override without escalation | n/a | Yes | Yes |
 | Override logged with reason code | — | Required | Required |
@@ -31,7 +31,7 @@ These are not a maturity ladder. HITL is not "better" than HOTL — it is more e
 | Contestation path for affected person | — | — | Required |
 | Kill switch, tested | Required | Required | Required, tested quarterly |
 
-**T1 exception — high-volume decisions.** Where per-decision human review is genuinely infeasible at volume, HOTL may substitute for HITL only with all of: confidence-based routing (§4), 100% review of adverse outcomes, ≥20% sampling of the remainder, a contestation path with a guaranteed human decision-maker, and Council approval recorded as a time-bound exception. This is the most-abused provision in any HITL policy, so it is deliberately expensive to invoke.
+**T1 exception — high-volume decisions.** Where per-decision human review is genuinely infeasible at volume, HOTL may substitute for HITL only with all of: confidence-based routing (§4), 100% review of adverse outcomes, a substantial sample of the remainder `[CALIBRATE]`, a contestation path with a guaranteed human decision-maker, and Council approval recorded as a time-bound exception. This is the most-abused provision in any HITL policy, so it is deliberately expensive to invoke.
 
 ---
 
@@ -39,13 +39,13 @@ These are not a maturity ladder. HITL is not "better" than HOTL — it is more e
 
 A reviewer is meaningful oversight only when **all five** conditions hold. Failing any one means the control exists on paper only.
 
-1. **Authority.** The reviewer can reject the system's output without seeking permission, and without it counting against their performance metrics.
+1. **Authority.** The reviewer can reject the system's output without seeking permission, and without it counting against their performance metrics. *(Corresponds to Art. 14(4)(d); Art. 26(2) requires deployers to assign oversight to persons with the necessary authority.)*
 2. **Capability.** The reviewer understands the domain well enough to detect a wrong answer — not merely a malformed one. A reviewer who cannot independently evaluate the decision is a transcription step, not an oversight step.
 3. **Information.** The reviewer sees the inputs, the system's output, its confidence or uncertainty, and the top factors driving it. Reviewing a bare recommendation is not review.
-4. **Time.** The reviewer has enough time per decision to actually apply judgment. If throughput targets make genuine review arithmetically impossible, the control has been designed to fail.
+4. **Time.** The reviewer has enough time per decision to actually apply judgment. If throughput targets make genuine review arithmetically impossible, the control has been designed to fail. **This condition has no counterpart in Art. 14 — it is the author's addition.**
 5. **Consequence.** Overrides visibly affect the system — they feed evaluation, retraining, and recertification. Oversight that changes nothing trains reviewers to stop bothering.
 
-**Automation bias is the default failure.** Humans presented with a confident machine recommendation approve it at very high rates, and that rate climbs as the system gets *better*, because trust accumulates faster than vigilance. Countermeasures in §5 are not optional garnish; they are the control.
+**Automation bias is the default failure**, and it is named in the regulation itself at Art. 14(4)(b). Experimental work found operators using highly reliable but imperfect aids performed worse than operators with none, and that accountability for decision accuracy reduced the effect. **Those studies were run in monitoring-task contexts; their rates do not transfer to other domains and are not used here as thresholds** — see [Source-to-Claim Map §5](source-to-claim-map.md). Note also that the regulation requires overseers *remain aware* of automation bias; **it does not require measuring whether oversight is working.** The measurement regime in §5 is this framework's inference about how to discharge that duty, not a legal requirement.
 
 ---
 
@@ -79,11 +79,11 @@ These metrics exist to answer one question: *is the human review we require actu
 
 | Signal | What it indicates | Threshold |
 |---|---|---|
-| **Override rate** | Rate at which reviewers reject system output | Sustained <1% on a T1 system triggers investigation |
+| **Override rate** | Rate at which reviewers reject system output | `[CALIBRATE]` Floor unset — see [GAPS](../GAPS.md) C1 |
 | **Time-per-decision** | Median review duration | Below the floor set at Gate 2 triggers investigation |
-| **Override rate by reviewer** | Variance across the reviewer pool | Any reviewer at ~0% while peers override materially more |
+| **Override rate by reviewer** | Variance across the reviewer pool | Comparative, not absolute: any reviewer materially below their peer pool |
 | **Reversal rate on appeal** | Contested decisions later overturned | Rising trend indicates review is not catching errors |
-| **Post-hoc audit disagreement** | Independent re-review of approved decisions | >10% disagreement invalidates the oversight control |
+| **Post-hoc audit disagreement** | Independent re-review of approved decisions. **The only signal that independently establishes whether review is real** | `[CALIBRATE]` Ceiling unset — see [GAPS](../GAPS.md) C2 |
 | **Time-of-day / queue-depth effect** | Override rate falling as backlog grows | Evidence of throughput pressure defeating review |
 
 **A very low override rate is never presented as evidence the system is working well.** It is ambiguous between an excellent system and absent oversight, and only independent post-hoc audit distinguishes them. That audit is a required T1 control, run quarterly on a random sample by someone outside the reviewing team.

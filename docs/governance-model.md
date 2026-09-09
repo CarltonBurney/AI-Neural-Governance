@@ -107,7 +107,7 @@ The audit question this is built to answer: *"Show me who approved this system, 
 
 **Continuous (T1):** output quality against pre-registered metrics, disparate impact across protected groups, human override rate, escalation volume and resolution time, input drift, cost and latency anomalies, incident count.
 
-**The override rate is the most informative single metric.** If human reviewers approve 99.8% of what a T1 system proposes, the oversight is nominal rather than real — see [Human-in-the-Loop §5](human-in-the-loop.md).
+**The override rate is the most informative single metric — and it is not self-interpreting.** A very low override rate is *ambiguous* between an excellent system and absent oversight; only independent re-review distinguishes them. `[CALIBRATE]` No floor is set here, because the meaningful floor depends on the baseline rate of genuine human disagreement in the decision domain, which must be measured rather than assumed — see [Human-in-the-Loop §5](human-in-the-loop.md) and [GAPS](../GAPS.md) C1.
 
 **Recertification:** T1 semi-annually, T2 and T3 annually. The accountable owner re-attests that purpose, population, data, and autonomy are unchanged; that controls still operate; and that monitoring thresholds were met. Failure to recertify by the due date triggers automatic suspension — not a reminder.
 
