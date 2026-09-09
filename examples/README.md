@@ -1,6 +1,6 @@
 # Worked Examples
 
-> **Illustrative scenarios** constructed to demonstrate the framework operating end to end. Not descriptions of real deployments.
+> **Constructed teaching scenarios.** They demonstrate how the framework reasons about a case. They are **not** case studies, and they are **not** evidence that this framework has been operated. Documented public incidents are kept separate, in [Sources](../docs/sources.md); the author's own operating history is not represented anywhere in this repository — see [GAPS.md](../GAPS.md) §A.
 
 A framework reads as generic until a real case runs through it. Each example carries a full intake, dimensional scoring with justifications, the tier determination and the argument that was had about it, the controls applied, and what monitoring caught afterward.
 
@@ -12,4 +12,4 @@ A framework reads as generic until a real case runs through it. Each example car
 
 ## The through-line
 
-All three turn on the same principle: **classification is a property of current behavior, not of the intake form.** Example 1 changed its behavior to earn a lower tier. Example 2 changed its interface when measurement showed the oversight was nominal. Example 3 had its behavior changed *for* it by a vendor, and the framework's failure was detection latency — eleven weeks — which is what got amended.
+All three turn on the same principle: **classification is a property of current behavior, not of the intake form.** Example 1 changed its behavior to earn a lower tier. Example 2 changed its interface when measurement showed the oversight was nominal. Example 3 had its behavior changed *for* it by a vendor, and the framework's failure was detection latency, which is what got amended.

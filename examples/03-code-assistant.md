@@ -1,6 +1,6 @@
 # Worked Example 3 — Internal Code Assistant
 
-> **Illustrative scenario** constructed to demonstrate how the framework operates end to end. Not a description of a real deployment.
+> **Constructed teaching scenario**, not a case study. Operational metrics have been deliberately omitted rather than invented — see [GAPS.md](../GAPS.md) A1–A7.
 
 **Proposal:** An IDE-integrated coding assistant for the engineering organization. Suggests completions, explains code, drafts tests. Every suggestion is accepted or rejected by a developer, and all output passes normal code review and CI.
 
@@ -13,7 +13,7 @@ This example demonstrates the **lightweight path** — and then what happens whe
 | Field | Submission |
 |---|---|
 | Purpose | Developer productivity; reduce time on boilerplate and test scaffolding |
-| Affected populations | ~400 internal engineers. No external population. |
+| Affected populations | Internal engineers only. No external population. |
 | Autonomy | Suggests. A developer accepts or rejects every suggestion. |
 | Data categories | Source code, internal technical documentation. No personal data. |
 | Exposure | Internal, authenticated staff only |
@@ -46,7 +46,7 @@ Deliberately light. Governance capacity is finite, and spending it here means no
 - Annual recertification
 - **No** pre-approval gate, design review, evaluation requirement, or Council involvement
 
-Time from intake to approved: **4 days**, entirely self-serve.
+Time from intake to approved: days, not weeks — entirely self-serve. `[CALIBRATE — target duration]`
 
 ### Why the light path matters
 
@@ -56,7 +56,7 @@ A framework that treats every AI use case as high-risk produces one predictable 
 
 ---
 
-## Month seven — the change that mattered
+## The change that matters
 
 Engineering enabled the vendor's new agent mode. It could now read the full repository, make multi-file edits, run tests, and **open pull requests autonomously against internal repositories**, including the customer-data services.
 
@@ -64,9 +64,9 @@ No one submitted anything. It was a feature toggle on an existing, already-appro
 
 **This is the single most common governance failure in the framework's threat model:** scope expansion by vendor feature release, on a system whose original classification was correct at the time.
 
-### What caught it
+### What catches it
 
-The quarterly inventory reconciliation — cross-referencing registered AI systems against vendor entitlement and configuration changes. It flagged that the assistant's entitlement tier had changed. The lag was roughly eleven weeks.
+Periodic inventory reconciliation — cross-referencing registered AI systems against vendor entitlement and configuration changes — flags that the assistant's entitlement tier has changed. **The detection lag is the length of the reconciliation interval.** That is the whole problem: a control whose detection window is measured in months is not controlling a capability change that took effect on day one.
 
 ### Rescoring — Gate 8 → Gate 1
 
@@ -81,17 +81,17 @@ The quarterly inventory reconciliation — cross-referencing registered AI syste
 
 **New highest score: 3 → T1.**
 
-Per [Classification §7](../docs/classification-framework.md), **upward reclassification suspends operation** until the higher tier's controls are met. Agent mode was disabled within 24 hours. Completion mode — the originally approved T3 behavior — continued uninterrupted, because the suspension attaches to the change, not to the tool.
+Per [Classification §7](../docs/classification-framework.md), **upward reclassification suspends operation** until the higher tier's controls are met. Agent mode is disabled. Completion mode — the originally approved T3 behavior — continues uninterrupted, because the suspension attaches to the change, not to the tool.
 
 ### The framework amendment
 
 The post-incident review asked the standard question: *did the control exist but not operate, or not exist at all?*
 
-**It did not exist.** Quarterly reconciliation caught this in eleven weeks; a governance model relying on an eleven-week detection window for autonomy expansion is not controlling autonomy expansion. Three amendments followed:
+**It did not exist.** A governance model that detects autonomy expansion only at the next reconciliation is not controlling autonomy expansion. Three amendments follow:
 
 1. **Vendor feature activation is a Gate 8 change event.** Enabling a materially new capability on an approved system requires change classification before activation, not at the next reconciliation.
 2. **Autonomy changes are a named reclassification trigger** in their own right, added to [Classification §7](../docs/classification-framework.md).
-3. **Entitlement-change monitoring moved from quarterly to continuous** for any vendor AI in the inventory, via automated alerting on configuration and license changes.
+3. **Entitlement-change monitoring moves from periodic to continuous** for any vendor AI in the inventory, via automated alerting on configuration and license changes.
 
 ---
 
@@ -99,10 +99,10 @@ The post-incident review asked the standard question: *did the control exist but
 
 Agent mode was resubmitted as a **separate T1 use case** with a bounded envelope: read-only on customer-data services, write access limited to non-production repositories, mandatory human authorship of any PR touching payment or authentication paths, and full action logging.
 
-That case is a different system from the code assistant, and it is governed as one. Splitting it was itself a design decision — bundling a T1 capability into a T3 tool would have forced the entire tool up to T1 and destroyed the light path for 400 engineers.
+That case is a different system from the code assistant, and it is governed as one. Splitting it was itself a design decision — bundling a T1 capability into a T3 tool would have forced the entire tool up to T1 and destroyed the light path for every engineer using it.
 
 ---
 
 ## Takeaway
 
-**Classification is a property of current behavior, not of the intake form.** The original T3 assignment was correct and remained correct for the completion feature. What failed was the assumption that an approved system stays the system that was approved — and vendors change systems without asking. The framework's job was not to prevent the change; it was to notice it. Eleven weeks was too slow, and the framework was amended to say so.
+**Classification is a property of current behavior, not of the intake form.** The original T3 assignment was correct and remained correct for the completion feature. What failed was the assumption that an approved system stays the system that was approved — and vendors change systems without asking. The framework's job was not to prevent the change; it was to notice it fast enough to matter.

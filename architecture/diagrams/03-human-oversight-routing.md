@@ -16,7 +16,7 @@ flowchart TD
     CONF -->|High| TIERCHK{"Tier?"}
 
     TIERCHK -->|T1| FULL
-    TIERCHK -->|T2| SAMPLE["SAMPLED REVIEW<br/>Minimum 5 percent<br/>Audit trail retained"]
+    TIERCHK -->|T2| SAMPLE["SAMPLED REVIEW<br/>Rate to be calibrated<br/>Audit trail retained"]
     TIERCHK -->|T3| AUTO["Proceeds<br/>Aggregate review only"]
 
     DUAL --> DECIDE["Human decision recorded"]
@@ -27,7 +27,7 @@ flowchart TD
     DECIDE --> LOGGED["Override log<br/>Reason code<br/>Time-per-decision"]
     LOGGED --> MONITOR{"Effectiveness<br/>monitoring"}
 
-    MONITOR -->|"Override rate below 1 percent<br/>OR review time below floor<br/>OR audit disagreement above 10 percent"| INVESTIGATE["OVERSIGHT CONTROL<br/>PRESUMED FAILING<br/>Independent audit triggered"]
+    MONITOR -->|"Override rate below floor<br/>OR review time below floor<br/>OR audit disagreement above ceiling<br/>ALL THRESHOLDS UNCALIBRATED"| INVESTIGATE["OVERSIGHT CONTROL<br/>PRESUMED FAILING<br/>Independent audit triggered"]
     MONITOR -->|Within thresholds| HEALTHY["Control operating<br/>Feeds recertification"]
 
     classDef review fill:#1e3a5f,stroke:#2563eb,color:#fff
@@ -38,7 +38,7 @@ flowchart TD
     class HEALTHY ok
 ```
 
-**The bottom loop is the part most frameworks omit.** Requiring human review is easy; detecting that the required review has become meaningless is the actual control. A sustained override rate below 1% on a T1 system is treated as evidence of *absent oversight* until an independent audit proves otherwise — because a very low override rate is ambiguous between an excellent system and a rubber stamp, and only post-hoc audit distinguishes them.
+**The bottom loop is the part most frameworks omit.** Requiring human review is easy; detecting that the required review has become meaningless is the actual control. A sustained override rate below the calibrated floor is treated as evidence of *absent oversight* until an independent audit proves otherwise — because a very low override rate is ambiguous between an excellent system and a rubber stamp, and only post-hoc audit distinguishes them.
 
 Override rate is never used as an individual reviewer performance metric. Doing so manufactures precisely the failure mode being measured.
 

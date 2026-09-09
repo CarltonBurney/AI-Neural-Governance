@@ -15,18 +15,22 @@ stateDiagram-v2
     Approved --> Live: Gate 6 monitoring confirmed
 
     Live --> Live: Within thresholds
-    Live --> Suspended: SEV1 incident
-    Live --> Suspended: Recertification lapsed
-    Live --> Suspended: Exception expired
-    Live --> Suspended: Reviewer pool below minimum
-    Live --> Reclassifying: Material change at Gate 8
-
-    Suspended --> Remediation: Post-incident review
-    Remediation --> Validated: Re-validate and re-approve
-    Remediation --> Retired: Not remediable
-
-    Reclassifying --> Classified: Re-enters at Gate 1
+    Live --> Reclassifying: Gate 8 change
     Live --> Retired: End of life
+
+    state Suspended {
+        [*] --> Triggered
+        Triggered: SEV1 incident
+        Triggered: Recertification lapsed
+        Triggered: Exception expired
+        Triggered: Reviewer pool below min
+    }
+
+    Live --> Suspended
+    Suspended --> Remediation: Post-incident review
+    Remediation --> Validated: Re-validate
+    Remediation --> Retired: Not remediable
+    Reclassifying --> Classified: Re-enters Gate 1
     Retired --> [*]
     Rejected --> [*]
 ```

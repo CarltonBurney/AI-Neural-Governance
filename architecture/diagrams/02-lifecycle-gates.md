@@ -3,9 +3,9 @@
 The eight checkpoints every AI system passes through, with the owner and exit criterion at each. A gate that cannot be failed is not a gate.
 
 ```mermaid
-flowchart LR
+flowchart TB
     subgraph BUILD ["Build"]
-        direction TB
+        direction LR
         G1["Gate 1<br/>INTAKE<br/>—<br/>Accountable Owner<br/>Exit: tier assigned"]
         G2["Gate 2<br/>DESIGN REVIEW<br/>—<br/>Domain Board<br/>Exit: oversight adequate"]
         G3["Gate 3<br/>DATA GOVERNANCE<br/>—<br/>Legal and Privacy<br/>Exit: no open objection"]
@@ -14,14 +14,14 @@ flowchart LR
     end
 
     subgraph LAUNCH ["Launch"]
-        direction TB
+        direction LR
         G5["Gate 5<br/>PRE-DEPLOYMENT<br/>—<br/>Council for T1<br/>Exit: approval recorded"]
         G6["Gate 6<br/>DEPLOYMENT<br/>—<br/>Accountable Owner<br/>Exit: monitoring live"]
         G5 --> G6
     end
 
     subgraph RUN ["Run"]
-        direction TB
+        direction LR
         G7["Gate 7<br/>OPERATE<br/>—<br/>Accountable Owner<br/>Exit: within thresholds"]
         G8["Gate 8<br/>CHANGE / RETIRE<br/>—<br/>Accountable Owner<br/>Exit: reclassified or retired"]
         G7 --> G8

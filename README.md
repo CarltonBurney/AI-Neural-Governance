@@ -2,7 +2,11 @@
 
 **A working governance framework for enterprise AI** — classification, decision rights, lifecycle controls, and human oversight that can be evidenced under audit.
 
-> Portfolio artifact by **Carlton Burney**, demonstrating enterprise AI risk and governance design. The worked examples are illustrative scenarios constructed to show the framework operating end to end, not descriptions of real deployments.
+> Portfolio artifact by **Carlton Burney**, demonstrating enterprise AI risk and governance design.
+>
+> **Provenance, stated plainly.** Every rule here is a **proposal**, not adopted policy. Regulatory citations are verified against the official EUR-Lex text; every numeric threshold is an uncalibrated placeholder. The worked examples are **constructed teaching scenarios** — they demonstrate reasoning, **not operational experience**, and this repository contains no account of work the author has performed.
+>
+> Read [Source-to-Claim Map](docs/source-to-claim-map.md) to see what backs each rule · [Status](STATUS.md) for component-level state · [Gaps](GAPS.md) for what is unresolved.
 
 ---
 

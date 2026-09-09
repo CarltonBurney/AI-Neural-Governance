@@ -1,6 +1,6 @@
 # Worked Example 1 — Customer Support Agent
 
-> **Illustrative scenario** constructed to demonstrate how the framework operates end to end. Not a description of a real deployment.
+> **Constructed teaching scenario**, not a case study. Operational metrics have been deliberately omitted rather than invented — see [GAPS.md](../GAPS.md) A1–A7.
 
 **Proposal:** A conversational agent handling inbound customer support for a subscription service. Answers billing and account questions, and can perform account actions — apply a credit, change a plan, cancel a subscription — without a support agent involved.
 
@@ -10,8 +10,8 @@
 
 | Field | Submission |
 |---|---|
-| Purpose | Reduce median first-response time from 6 hours to under 2 minutes; deflect 40% of tier-1 contacts |
-| Affected populations | All customers contacting support — approx. 180,000/year |
+| Purpose | Reduce median first-response time; deflect a share of tier-1 contacts `[CALIBRATE — target rate]` |
+| Affected populations | All customers contacting support `[CALIBRATE — annual volume drives D4]` |
 | Autonomy (today) | Answers questions; executes credits up to $50, plan changes, and cancellations |
 | Data categories | Customer name, email, billing history, payment method last-4, support history |
 | Exposure | Customer-facing, authenticated, under company brand |
@@ -38,7 +38,7 @@ Overrides checked: no employment, credit, essential-services, medical, or specia
 
 The proposing team argued for T2 on the grounds that support agents already perform these actions routinely, so the AI is not doing anything new or consequential.
 
-**The Board rejected that reasoning.** The tier reflects what the *system* does without a human, not what a trained employee does with accountability and judgment. Autonomous execution of irreversible-to-the-customer actions at 180,000/year scale is a different risk profile from the same action taken by an accountable person, even when the action is identical.
+**The Board rejected that reasoning.** The tier reflects what the *system* does without a human, not what a trained employee does with accountability and judgment. Autonomous execution of irreversible-to-the-customer actions at support-queue scale is a different risk profile from the same action taken by an accountable person, even when the action is identical.
 
 Recorded as a scoring disagreement per [request-classification §3](../architecture/workflows/request-classification.md): requester scored D2 as 2, analyst as 3, higher applied.
 
@@ -51,8 +51,8 @@ T1 requires human-in-the-loop — per-decision review before effect — which wo
 | Action | Before | After |
 |---|---|---|
 | Answer billing/account questions | Autonomous | Autonomous |
-| Apply credit ≤ $50 | Autonomous | Autonomous, logged, sampled at 10% |
-| Change plan | Autonomous | Autonomous, reversible in-session for 24h |
+| Apply credit below a set limit | Autonomous | Autonomous, logged, sampled `[CALIBRATE — limit and sampling rate]` |
+| Change plan | Autonomous | Autonomous, reversible in-session for a defined window |
 | **Cancel subscription** | **Autonomous** | **Proposes; human approves** |
 | Anything outside the envelope | Attempted | Hard handoff to a human |
 
@@ -67,26 +67,26 @@ This is the framework working as intended. The tier did not lower because someon
 - Data protection review and security threat model — Gate 3
 - Evaluation against pre-registered thresholds: task accuracy, hallucinated-policy rate, escalation appropriateness
 - **Mandatory AI disclosure** at conversation start and on request
-- Human-on-the-loop: 10% sampled review, plus 100% review of any interaction containing a complaint keyword or a reversal request
+- Human-on-the-loop: sampled review `[CALIBRATE — rate]`, plus 100% review of any interaction containing a complaint keyword or a reversal request
 - Full logging of all account actions; sampled logging of conversations
-- Tested rollback: feature flag returns all traffic to the human queue in under 60 seconds
+- Tested rollback: feature flag returns all traffic to the human queue; time-to-rollback measured and recorded at test
 - Annual recertification
 
 ---
 
-## What monitoring caught in month four
+## What monitoring is designed to catch
 
-Two signals moved together: the reversal rate on plan changes rose from 0.4% to 2.1%, and escalation volume dropped 30%.
+The scenario turns on two signals moving together: the reversal rate on plan changes rises, and escalation volume falls.
 
-Falling escalations initially read as *improvement*. It was the opposite. A vendor model update had made the agent more confident and more fluent, so it escalated less — including on cases it should have handed off. It was resolving ambiguous requests by guessing, and the guesses read as authoritative to customers.
+Falling escalations read as *improvement*. It is the opposite. A vendor model update that makes the agent more confident and more fluent causes it to escalate less — including on cases it should hand off. It resolves ambiguous requests by guessing, and the guesses read as authoritative to customers.
 
-**Classified SEV2.** Contained within 24 hours by lowering the escalation threshold; the vendor update was rolled back pending re-evaluation.
+Under this framework that combination is a **SEV2**: contained by lowering the escalation threshold, with the vendor update rolled back pending re-evaluation.
 
-Three framework consequences:
+Three framework consequences follow:
 
 1. **A vendor model change is a material change** — it routes to Gate 8 change control and re-evaluation, not to a release note. The contract's model-change notification clause ([Governance Model §8](../docs/governance-model.md)) existed but the notification had not been wired into change control.
-2. **A falling escalation rate is not inherently good.** Monitoring was amended to treat escalation-rate movement in *either* direction beyond a band as an investigation trigger.
-3. The post-incident review's answer to *"did the control exist but not operate, or not exist at all"* was **not exist** — so the framework was amended.
+2. **A falling escalation rate is not inherently good.** Monitoring should treat escalation-rate movement in *either* direction beyond a band as an investigation trigger. `[CALIBRATE — band width]`
+3. The post-incident review question — *"did the control exist but not operate, or not exist at all?"* — resolves to **not exist**, which is what makes it a framework amendment rather than an execution failure.
 
 ---
 
