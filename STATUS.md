@@ -21,12 +21,15 @@ Uses the author's own templates recovered from Google Drive — `CURRENT_STATE_M
 
 ---
 
-## Two architectures found — not yet reconciled with each other
+## Two design levels — resolved by the author
 
-Source material describes **two distinct stacks**. Whether one supersedes the other, or they are layers of one system, is **unresolved and is a question for the author** ([GAPS](GAPS.md) B7).
+Source material describes two stacks. **Confirmed by the author (2026-09-09): these are separate design levels, not competing designs.** Stack A is the active, buildable path. Stack B is a **deferred design level, to be built when equipment supports a local build**.
 
-| | Stack A — Microsoft 365 | Stack B — local-first |
+This is consistent with PAIOS §4.7 (cloud portability): with no local build possible yet, cloud-first is a deliberate constraint-driven choice, not a preference.
+
+| | **Stack A — Microsoft 365 (ACTIVE)** | **Stack B — local-first (DEFERRED)** |
 |---|---|---|
+| Status | Current buildable path | **Design level; awaits hardware** |
 | Source | `PAIOS-CLAUDE-md-draft.md` | `CURRENT_STATE_MATRIX` / `SYSTEM_BASELINE` templates |
 | Models | Copilot Studio, Azure AI | Ollama, OpenAI-compatible endpoints |
 | Data | Dataverse, SharePoint | PostgreSQL, SQLite, ChromaDB/Qdrant |
@@ -34,13 +37,15 @@ Source material describes **two distinct stacks**. Whether one supersedes the ot
 | Governance | Governance engine, AI registry, approval manager, kill switch | Governance Core, Tool Registry, Execution Gateway, Purpose Binding, RBAC/Identity, deny precedence, audit trail |
 | Language | TypeScript, Node, Express/Fastify | Not stated in recovered material |
 
-**Stack B contains governance concepts absent from this repository's framework** — notably **Purpose Binding** and **deny precedence** in policy evaluation. Both are stronger, more implementable constructs than the prose controls drafted here. See [Reconciliation](docs/reconciliation-with-paios.md).
+**Stack B contains governance concepts absent from this repository's framework** — notably **Purpose Binding** and **deny precedence** in policy evaluation. Both are stronger, more implementable constructs than the prose controls drafted here.
+
+**These should inform this framework now rather than waiting on hardware.** A governance layer — purpose binding, deny precedence, tool registry, execution gateway, audit trail — is portable across both stacks. It is the part of Stack B that does not depend on local compute, and this repository is where it belongs. See [Reconciliation](docs/reconciliation-with-paios.md).
 
 ---
 
 ## CURRENT_STATE_MATRIX — PAIOS components
 
-Component list taken from the author's template. **No PAIOS code has been inspected by this session.**
+Component list taken from the author's template. **No PAIOS code has been inspected by this session**, and per the author these are **Stack B (deferred design level)** components. `NOT INSPECTED` therefore carries an additional caveat: some or all of these may be planned rather than built. Whether any Stack B code exists is [GAPS](GAPS.md) B9.
 
 | Component | Status | Real/Mock/Partial | Dependency | Blocker | Next Action |
 |---|---|---|---|---|---|
@@ -56,7 +61,7 @@ Component list taken from the author's template. **No PAIOS code has been inspec
 | Operations — service health checks | NOT INSPECTED | Unknown | — | Repo not attached | as above |
 | Operations — error surfacing | NOT INSPECTED | Unknown | — | Repo not attached | as above |
 | Command Center — aggregation | NOT INSPECTED | Unknown | — | Repo not attached | as above |
-| **Governance Core** | NOT INSPECTED | Unknown | — | Repo not attached | **Highest priority — this repository is its documentation layer** |
+| **Governance Core** | NOT INSPECTED | Unknown | — | Repo not attached; Stack B deferred | **This repository is its documentation layer. Design work here need not wait on hardware** |
 | **Tool Registry** | NOT INSPECTED | Unknown | — | Repo not attached | Map to control matrix `allowed_tools` |
 | **Execution Gateway** | NOT INSPECTED | Unknown | Governance Core | Repo not attached | Map to approval requirements |
 | Data stores (Postgres/SQLite/vector) | NOT INSPECTED | Unknown | — | Repo not attached | as above |
@@ -116,7 +121,9 @@ Most fields are **N/A: no application.** This repository is documentation only. 
 | Verification actually run | Mermaid render ×5 (all pass); visual inspection ×4 diagrams; 132 internal links (0 broken); EUR-Lex citation check |
 | Browser validation | **N/A** |
 
-**Highest-priority gap identified:** this repository documents governance in prose while Stack B implements it in code (Governance Core, Tool Registry, Execution Gateway, Purpose Binding) — and the two have never been connected. The single most valuable next step is mapping this framework's tiers and control matrix onto the agent-definition schema so governance becomes machine-readable rather than narrative.
+**Highest-priority gap identified:** this repository documents governance in prose, while the governance constructs that would make it enforceable — Governance Core, Tool Registry, Execution Gateway, Purpose Binding, deny precedence — sit in a deferred design level awaiting hardware.
+
+**The governance layer does not require local compute.** Specifying it now — mapping tiers and the control matrix onto the agent-definition schema (`risk_level`, `approval_requirements`, `escalation_conditions`, `prohibited_actions`) so governance is machine-readable rather than narrative — is work that can proceed against Stack A today and carries directly into Stack B when equipment allows. This is the single most valuable next step.
 
 ---
 
