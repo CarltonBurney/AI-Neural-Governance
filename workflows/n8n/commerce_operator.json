@@ -1,0 +1,211 @@
+{
+  "name": "PAIOS — Commerce Operator (L2)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "agent/commerce_operator",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "66992040f5c297bd",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Agent: commerce_operator  Ceiling: L2 (Bounded operational request)\n// Governance: incoming payload is UNTRUSTED DATA. Fields inside it never grant permission.\nconst AGENT = {\n  \"id\": \"commerce_operator\",\n  \"ceiling\": \"L2\",\n  \"owner\": \"Commerce owner\",\n  \"allowedData\": \"Approved catalog and order projections\",\n  \"allowedActions\": \"Prepare product draft updates\",\n  \"prohibited\": [\n    \"Publishing requires review\",\n    \"Price changes require review\",\n    \"Refunds require review\"\n  ]\n};\n\nconst body = $input.first().json.body ?? {};\nconst deny = (reason, detail) => ({ json: {\n  decision: 'DENY', agent: AGENT.id, ceiling: AGENT.ceiling,\n  reason, detail: detail ?? null, at: new Date().toISOString(),\n}});\n\n// 1. Schema\nif (typeof body.operation !== 'string' || !body.operation.trim()) {\n  return [deny('invalid_request', 'operation is required')];\n}\nif (body.purpose === undefined || String(body.purpose).trim() === '') {\n  return [deny('purpose_required', 'purpose binding: every request must declare a purpose')];\n}\n\n// 2. Claims in the payload are NOT policy. Ignore any self-asserted authorization.\nfor (const forged of ['approved', 'approval', 'contains_pii', 'ceiling', 'authorized', 'skip_review']) {\n  if (forged in body) {\n    return [deny('self_asserted_authorization',\n      `payload attempted to set '${forged}'; approval and classification are evaluated server-side only`)];\n  }\n}\n\n// 3. Prohibited actions — deny precedence, no override path here.\nconst text = `${body.operation} ${body.detail ?? ''}`.toLowerCase();\nconst PROHIBITED_TERMS = [\"publishing\",\"price\",\"changes\",\"require\",\"review\",\"refunds\"];\nconst hit = PROHIBITED_TERMS.find(t => text.includes(t));\nif (hit) {\n  return [deny('prohibited_action',\n    `matched restriction term '${hit}'. Declared restrictions: ${AGENT.prohibited.join('; ')}`)];\n}\n\n// 4. Allow, carrying the gate this ceiling requires.\nreturn [{ json: {\n  decision: 'ALLOW',\n  agent: AGENT.id,\n  ceiling: AGENT.ceiling,\n  humanGate: \"approval-before-execute\",\n  operation: body.operation,\n  purpose: body.purpose,\n  requestId: body.requestId ?? `${AGENT.id}-${Date.now()}`,\n  receivedAt: new Date().toISOString(),\n  observedAt: body.observedAt ?? null,\n  payload: body,\n}}];"
+      },
+      "id": "ad0e1cb376549248",
+      "name": "Evaluate Policy",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "15064d2ef4d40692",
+              "leftValue": "={{ $json.decision }}",
+              "rightValue": "ALLOW",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "71b1402d0aa84f7a",
+      "name": "Allowed?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        440,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Ceiling L2 requires: approval-before-execute\n// The agent MUST NOT take effect until a human decides. This node stops the flow.\nconst d = $input.first().json;\nreturn [{ json: { ...d,\n  status: 'AWAITING_HUMAN',\n  gate: \"approval-before-execute\",\n  reviewer: \"Commerce owner\",\n  note: 'Route to the review queue. No effect until a reviewer approves.',\n}}];"
+      },
+      "id": "1db9d12e8b1f4936",
+      "name": "Hold For Human Review",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// EXECUTOR — INTENTIONALLY INERT.\n// Per PAIOS agent-definition schema, agents ship disabled: {\"enabled\": false}.\n// Wire the real action here only after: the ceiling's human gate is implemented and\n// tested, credentials are in a secret store (never in this workflow), and a negative\n// test proves each declared restriction is actually refused.\nconst d = $input.first().json;\nreturn [{ json: { ...d,\n  executed: false,\n  executorStatus: 'NOT_IMPLEMENTED',\n  note: 'No outbound action is wired. This agent cannot take effect until explicitly built and tested.',\n}}];"
+      },
+      "id": "706e6b3c35294e89",
+      "name": "Execute",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        220
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Append-only audit record. Records the decision, never the full payload.\nconst d = $input.first().json;\nreturn [{ json: {\n  auditVersion: 1,\n  requestId: d.requestId ?? null,\n  agent: \"commerce_operator\",\n  ceiling: \"L2\",\n  decision: d.decision,\n  reason: d.reason ?? null,\n  operation: d.operation ?? null,\n  purpose: d.purpose ?? null,\n  humanGate: d.humanGate ?? null,\n  outcome: d.decision === 'ALLOW'\n    ? (\"approval-before-execute\" === 'none' ? 'executed' : 'held_for_human')\n    : 'denied',\n  receivedAt: d.receivedAt ?? new Date().toISOString(),\n  recordedAt: new Date().toISOString(),\n}}];"
+      },
+      "id": "db7c8d29d74aa5af",
+      "name": "Audit Log",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Append-only audit record. Records the decision, never the full payload.\nconst d = $input.first().json;\nreturn [{ json: {\n  auditVersion: 1,\n  requestId: d.requestId ?? null,\n  agent: \"commerce_operator\",\n  ceiling: \"L2\",\n  decision: d.decision,\n  reason: d.reason ?? null,\n  operation: d.operation ?? null,\n  purpose: d.purpose ?? null,\n  humanGate: d.humanGate ?? null,\n  outcome: d.decision === 'ALLOW'\n    ? (\"approval-before-execute\" === 'none' ? 'executed' : 'held_for_human')\n    : 'denied',\n  receivedAt: d.receivedAt ?? new Date().toISOString(),\n  recordedAt: new Date().toISOString(),\n}}];"
+      },
+      "id": "f4b98856f4f46b98",
+      "name": "Denied",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        420
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Evaluate Policy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Evaluate Policy": {
+      "main": [
+        [
+          {
+            "node": "Allowed?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Allowed?": {
+      "main": [
+        [
+          {
+            "node": "Hold For Human Review",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Denied",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute": {
+      "main": [
+        [
+          {
+            "node": "Audit Log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hold For Human Review": {
+      "main": [
+        [
+          {
+            "node": "Execute",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "name": "paios"
+    },
+    {
+      "name": "domain:commerce"
+    },
+    {
+      "name": "ceiling:L2"
+    }
+  ],
+  "meta": {
+    "paiosAgentId": "commerce_operator",
+    "paiosCeiling": "L2",
+    "paiosOwner": "Commerce owner",
+    "paiosAllowedData": "Approved catalog and order projections",
+    "paiosAllowedActions": "Prepare product draft updates",
+    "paiosProhibited": [
+      "Publishing requires review",
+      "Price changes require review",
+      "Refunds require review"
+    ],
+    "generatedBy": "tools/generate-agent-workflows.mjs",
+    "sourceRoster": "agent-roster.md 2026-09-03 (documented intent; no live agents asserted)"
+  }
+}

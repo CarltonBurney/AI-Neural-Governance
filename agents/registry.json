@@ -1,0 +1,44 @@
+{
+  "$comment": "Agent registry. Source: agent-roster.md, Command Center shared folder, 2026-09-03. That roster states 'Definitions only; no live agents are asserted' — this is DOCUMENTED INTENT, not evidence of running agents. Currency unconfirmed against Current Status 2026-09-09, which does not mention the roster.",
+  "schemaVersion": "0.1.0",
+  "generated": "2026-09-09",
+  "ceilings": {
+    "L0": {
+      "label": "Read and report",
+      "humanGate": "none",
+      "outboundAllowed": false,
+      "note": "No drafting that leads directly to action. Safe to run unattended."
+    },
+    "L1": {
+      "label": "Draft for review",
+      "humanGate": "review-before-effect",
+      "outboundAllowed": false,
+      "note": "Produces output a human reviews before it takes effect."
+    },
+    "L2": {
+      "label": "Bounded operational request",
+      "humanGate": "approval-before-execute",
+      "outboundAllowed": false,
+      "note": "Prepares a request against an operational system. Execution requires explicit approval."
+    }
+  },
+  "agents": [
+    { "id": "executive_research",  "name": "Executive Research",   "domain": "Executive",  "owner": "Research lead",     "ceiling": "L0", "data": "Approved research notes",                   "actions": "Read and collate cited material",        "restrictions": ["No external applications", "No confidential queries"] },
+    { "id": "opportunity_scout",   "name": "Opportunity Scout",    "domain": "Executive",  "owner": "Research lead",     "ceiling": "L0", "data": "Public jobs, gigs, grants and events",      "actions": "Collect qualified opportunities",        "restrictions": ["No applications", "No personal data submission"] },
+    { "id": "sprint_manager",      "name": "Sprint Manager",       "domain": "Operations", "owner": "Project owner",     "ceiling": "L1", "data": "Project briefs and task register",          "actions": "Draft milestones and next actions",      "restrictions": ["No calendar commitments without review"] },
+    { "id": "workflow_steward",    "name": "Workflow Steward",     "domain": "Operations", "owner": "Automation owner",  "ceiling": "L2", "data": "Approved run metadata",                     "actions": "Prepare bounded workflow requests",      "restrictions": ["No direct connector credentials"] },
+    { "id": "knowledge_curator",   "name": "Knowledge Curator",    "domain": "Knowledge",  "owner": "Knowledge owner",   "ceiling": "L1", "data": "Allowlisted Obsidian notes",                "actions": "Suggest links and classifications",      "restrictions": ["No bulk moves", "No deletion", "No tenant uploads"] },
+    { "id": "security_analyst",    "name": "Security Analyst",     "domain": "Enterprise", "owner": "Security team",     "ceiling": "L1", "data": "Approved security logs",                    "actions": "Summarize incidents and recommendations","restrictions": ["No account disabling", "No firewall changes"] },
+    { "id": "service_desk",        "name": "Service Desk",         "domain": "Enterprise", "owner": "Service owner",     "ceiling": "L1", "data": "Scoped tickets and knowledge",              "actions": "Draft response and triage",              "restrictions": ["No privileged remediation"] },
+    { "id": "hr_knowledge",        "name": "HR Knowledge",         "domain": "Enterprise", "owner": "HR owner",          "ceiling": "L0", "data": "Role-filtered policy documents",            "actions": "Answer policy questions with sources",   "restrictions": ["No employee decisions", "No private record inference"] },
+    { "id": "compliance_reviewer", "name": "Compliance Reviewer",  "domain": "Enterprise", "owner": "Governance owner",  "ceiling": "L1", "data": "Approved control evidence",                 "actions": "Flag gaps for specialist review",        "restrictions": ["No legal claims", "No certification claims"] },
+    { "id": "avpb_compiler",       "name": "AVPB Compiler",        "domain": "Creative",   "owner": "Creative director", "ceiling": "L1", "data": "Canon, scripts and Asset Registry",         "actions": "Prepare shot execution manifests",       "restrictions": ["Cannot rewrite canon", "Cannot release masters"] },
+    { "id": "continuity_qa",       "name": "Continuity QA",        "domain": "Creative",   "owner": "QA reviewer",       "ceiling": "L1", "data": "Versioned frames and state ledger",         "actions": "Compare invariants; draft repairs",      "restrictions": ["No automatic master approval"] },
+    { "id": "gallery_curator",     "name": "Gallery Curator",      "domain": "Creative",   "owner": "Gallery owner",     "ceiling": "L1", "data": "Artworks, provenance and rights",           "actions": "Draft collection and exhibition records","restrictions": ["No unapproved provenance claims"] },
+    { "id": "commerce_operator",   "name": "Commerce Operator",    "domain": "Commerce",   "owner": "Commerce owner",    "ceiling": "L2", "data": "Approved catalog and order projections",    "actions": "Prepare product draft updates",          "restrictions": ["Publishing requires review", "Price changes require review", "Refunds require review"] },
+    { "id": "publishing_producer", "name": "Publishing Producer",  "domain": "Commerce",   "owner": "Publishing owner",  "ceiling": "L1", "data": "Titles, editions and approved illustrations","actions": "Prepare proof and KDP submission packet","restrictions": ["No automatic KDP submission"] },
+    { "id": "marketing_planner",   "name": "Marketing Planner",    "domain": "Commerce",   "owner": "Marketing owner",   "ceiling": "L1", "data": "Approved assets, consent and inventory",    "actions": "Draft content calendar and campaigns",   "restrictions": ["No posting without review", "No ad spend without review"] },
+    { "id": "customer_service",    "name": "Customer Service",     "domain": "Commerce",   "owner": "Support owner",     "ceiling": "L1", "data": "Scoped order and help records",             "actions": "Draft customer responses",               "restrictions": ["No autonomous refunds", "No autonomous messages"] },
+    { "id": "business_analytics",  "name": "Business Analytics",   "domain": "Commerce",   "owner": "Finance reviewer",  "ceiling": "L0", "data": "Normalized sales and royalty facts",        "actions": "Report reconciled venture results",      "restrictions": ["No payments", "No invented missing revenue"] }
+  ]
+}

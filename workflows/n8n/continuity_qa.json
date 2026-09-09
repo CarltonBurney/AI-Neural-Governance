@@ -1,0 +1,209 @@
+{
+  "name": "PAIOS — Continuity QA (L1)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "agent/continuity_qa",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "0615a0484a68d85c",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Agent: continuity_qa  Ceiling: L1 (Draft for review)\n// Governance: incoming payload is UNTRUSTED DATA. Fields inside it never grant permission.\nconst AGENT = {\n  \"id\": \"continuity_qa\",\n  \"ceiling\": \"L1\",\n  \"owner\": \"QA reviewer\",\n  \"allowedData\": \"Versioned frames and state ledger\",\n  \"allowedActions\": \"Compare invariants; draft repairs\",\n  \"prohibited\": [\n    \"No automatic master approval\"\n  ]\n};\n\nconst body = $input.first().json.body ?? {};\nconst deny = (reason, detail) => ({ json: {\n  decision: 'DENY', agent: AGENT.id, ceiling: AGENT.ceiling,\n  reason, detail: detail ?? null, at: new Date().toISOString(),\n}});\n\n// 1. Schema\nif (typeof body.operation !== 'string' || !body.operation.trim()) {\n  return [deny('invalid_request', 'operation is required')];\n}\nif (body.purpose === undefined || String(body.purpose).trim() === '') {\n  return [deny('purpose_required', 'purpose binding: every request must declare a purpose')];\n}\n\n// 2. Claims in the payload are NOT policy. Ignore any self-asserted authorization.\nfor (const forged of ['approved', 'approval', 'contains_pii', 'ceiling', 'authorized', 'skip_review']) {\n  if (forged in body) {\n    return [deny('self_asserted_authorization',\n      `payload attempted to set '${forged}'; approval and classification are evaluated server-side only`)];\n  }\n}\n\n// 3. Prohibited actions — deny precedence, no override path here.\nconst text = `${body.operation} ${body.detail ?? ''}`.toLowerCase();\nconst PROHIBITED_TERMS = [\"automatic\",\"master\",\"approval\"];\nconst hit = PROHIBITED_TERMS.find(t => text.includes(t));\nif (hit) {\n  return [deny('prohibited_action',\n    `matched restriction term '${hit}'. Declared restrictions: ${AGENT.prohibited.join('; ')}`)];\n}\n\n// 4. Allow, carrying the gate this ceiling requires.\nreturn [{ json: {\n  decision: 'ALLOW',\n  agent: AGENT.id,\n  ceiling: AGENT.ceiling,\n  humanGate: \"review-before-effect\",\n  operation: body.operation,\n  purpose: body.purpose,\n  requestId: body.requestId ?? `${AGENT.id}-${Date.now()}`,\n  receivedAt: new Date().toISOString(),\n  observedAt: body.observedAt ?? null,\n  payload: body,\n}}];"
+      },
+      "id": "6a694b2a1163187c",
+      "name": "Evaluate Policy",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c141f50ec6854df3",
+              "leftValue": "={{ $json.decision }}",
+              "rightValue": "ALLOW",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a808d920ff17d965",
+      "name": "Allowed?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        440,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Ceiling L1 requires: review-before-effect\n// The agent MUST NOT take effect until a human decides. This node stops the flow.\nconst d = $input.first().json;\nreturn [{ json: { ...d,\n  status: 'AWAITING_HUMAN',\n  gate: \"review-before-effect\",\n  reviewer: \"QA reviewer\",\n  note: 'Route to the review queue. No effect until a reviewer approves.',\n}}];"
+      },
+      "id": "d6ccbd0d9c805e49",
+      "name": "Hold For Human Review",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// EXECUTOR — INTENTIONALLY INERT.\n// Per PAIOS agent-definition schema, agents ship disabled: {\"enabled\": false}.\n// Wire the real action here only after: the ceiling's human gate is implemented and\n// tested, credentials are in a secret store (never in this workflow), and a negative\n// test proves each declared restriction is actually refused.\nconst d = $input.first().json;\nreturn [{ json: { ...d,\n  executed: false,\n  executorStatus: 'NOT_IMPLEMENTED',\n  note: 'No outbound action is wired. This agent cannot take effect until explicitly built and tested.',\n}}];"
+      },
+      "id": "480bc1f6a2337969",
+      "name": "Execute",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        220
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Append-only audit record. Records the decision, never the full payload.\nconst d = $input.first().json;\nreturn [{ json: {\n  auditVersion: 1,\n  requestId: d.requestId ?? null,\n  agent: \"continuity_qa\",\n  ceiling: \"L1\",\n  decision: d.decision,\n  reason: d.reason ?? null,\n  operation: d.operation ?? null,\n  purpose: d.purpose ?? null,\n  humanGate: d.humanGate ?? null,\n  outcome: d.decision === 'ALLOW'\n    ? (\"review-before-effect\" === 'none' ? 'executed' : 'held_for_human')\n    : 'denied',\n  receivedAt: d.receivedAt ?? new Date().toISOString(),\n  recordedAt: new Date().toISOString(),\n}}];"
+      },
+      "id": "9eaee93dccbe7d6f",
+      "name": "Audit Log",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Append-only audit record. Records the decision, never the full payload.\nconst d = $input.first().json;\nreturn [{ json: {\n  auditVersion: 1,\n  requestId: d.requestId ?? null,\n  agent: \"continuity_qa\",\n  ceiling: \"L1\",\n  decision: d.decision,\n  reason: d.reason ?? null,\n  operation: d.operation ?? null,\n  purpose: d.purpose ?? null,\n  humanGate: d.humanGate ?? null,\n  outcome: d.decision === 'ALLOW'\n    ? (\"review-before-effect\" === 'none' ? 'executed' : 'held_for_human')\n    : 'denied',\n  receivedAt: d.receivedAt ?? new Date().toISOString(),\n  recordedAt: new Date().toISOString(),\n}}];"
+      },
+      "id": "38bb62b83861ef87",
+      "name": "Denied",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        420
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Evaluate Policy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Evaluate Policy": {
+      "main": [
+        [
+          {
+            "node": "Allowed?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Allowed?": {
+      "main": [
+        [
+          {
+            "node": "Hold For Human Review",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Denied",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute": {
+      "main": [
+        [
+          {
+            "node": "Audit Log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hold For Human Review": {
+      "main": [
+        [
+          {
+            "node": "Execute",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "name": "paios"
+    },
+    {
+      "name": "domain:creative"
+    },
+    {
+      "name": "ceiling:L1"
+    }
+  ],
+  "meta": {
+    "paiosAgentId": "continuity_qa",
+    "paiosCeiling": "L1",
+    "paiosOwner": "QA reviewer",
+    "paiosAllowedData": "Versioned frames and state ledger",
+    "paiosAllowedActions": "Compare invariants; draft repairs",
+    "paiosProhibited": [
+      "No automatic master approval"
+    ],
+    "generatedBy": "tools/generate-agent-workflows.mjs",
+    "sourceRoster": "agent-roster.md 2026-09-03 (documented intent; no live agents asserted)"
+  }
+}
