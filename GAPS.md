@@ -2,6 +2,8 @@
 
 **Questions this framework cannot answer from public sources.** Each one is a place where content was deliberately left open rather than filled with plausible invention.
 
+**Updated 2026-09-09** after recovering source material from Google Drive — see [Reconciliation](docs/reconciliation-with-paios.md). Several items moved to `PARTIAL` or `CLOSED`.
+
 Answer any of these and the corresponding section gets built properly. Partial and uncertain answers are useful — "I think we did something like that but I'd have to check" is a better input than silence, and far better than a confident guess by me.
 
 **Status key:** `OPEN` — unanswered · `PARTIAL` — some information, needs more · `CLOSED` — resolved, section built
@@ -14,13 +16,14 @@ The three [worked examples](examples/) are teaching scenarios. Real experience, 
 
 | # | Question | Status |
 |---|---|---|
-| A1 | Have you governed, reviewed, or advised on an AI or automated decision system? What did it do, and what was your role? | `OPEN` |
-| A2 | Have you built or operated an intake, classification, or approval process for anything — model risk, data governance, vendor risk, change control, privacy review? These transfer directly. | `OPEN` |
+| A1 | Have you governed, reviewed, or advised on an AI or automated decision system? | **`PARTIAL`** — Copilot Studio Capability Evidence: two governed agents (AXIS; M365 Knowledge & Workflow Assistant) designed, configured, tested. See [Reconciliation §4](docs/reconciliation-with-paios.md). Still open: any work in a client tenant |
+| A2 | Have you built or operated an intake, classification, or approval process? | **`PARTIAL`** — evidenced: approval/escalation logic, release gated on technical/security/knowledge-owner/process-owner/business approval, solution-based ALM promotion. Still open: whether this ran for a third party |
 | A3 | Have you had to tell a delivery team their use case was riskier than they had scoped it? What happened? | `OPEN` |
 | A4 | Have you dealt with a vendor changing a product's behavior under an existing approval, or shipping a capability nobody signed off? | `OPEN` |
-| A5 | Have you seen a control that existed on paper but was not actually operating? How was it discovered? | `OPEN` |
+| A5 | Have you seen a control that existed on paper but was not actually operating? | `OPEN` — though the AXIS acceptance set tests for "claim an unexecuted deployment succeeded", implying the concern is already yours |
 | A6 | Have you worked on a system where a human was formally in the loop but the review was thin in practice? | `OPEN` |
 | A7 | Any incident, near-miss, or audit finding you can describe generically? | `OPEN` |
+| A8 | The Copilot agents are "tested and deployment-ready", sanitized, not bound to a client tenant. Is there separate work that *did* run in a live tenant? | `OPEN` |
 
 ## B. Organizational context — determines the whole shape of the model
 
@@ -29,9 +32,9 @@ The framework currently assumes a mid-to-large enterprise with a Legal function,
 | # | Question | Status |
 |---|---|---|
 | B1 | What size and type of organization is this framework written for? A 200-person company cannot staff a Council with five functions. | `OPEN` |
-| B2 | Which industry? Financial services, healthcare, and public sector each need a sector overlay that does not currently exist. | `OPEN` |
+| B2 | Which industry / platform? | **`CLOSED`** — Microsoft 365 ecosystem: Copilot Studio, Power Platform, Azure, Graph, Entra ID, Dataverse. Framework should be re-scoped accordingly |
 | B3 | Which jurisdictions? The framework is EU-anchored. US state law, UK, and Canada are not covered. | `OPEN` |
-| B4 | Is the organization a **provider**, a **deployer**, or both? This changes which obligations attach — see [Standards Mapping §4](docs/standards-mapping.md). | `OPEN` |
+| B4 | Provider or deployer? | **`PARTIAL`** — PAIOS is built by Design Group MN (provider posture) but orchestrates third-party models (deployer posture). Both apply; needs splitting per component |
 | B5 | Does an existing model risk management function (e.g. SR 11-7) already exist that this should integrate with rather than duplicate? | `OPEN` |
 | B6 | Is there an existing risk taxonomy or severity scale this should align to instead of introducing its own? | `OPEN` |
 
@@ -66,7 +69,8 @@ Marked `[CALIBRATE]` inline. None is derived from a standard; see [Sources §2](
 | E1 | What role are you targeting? AI governance lead, risk manager, compliance, privacy, product? The emphasis should shift accordingly. | `OPEN` |
 | E2 | Who reads this — a technical hiring manager, a risk executive, a recruiter? Currently written for a risk-literate reader. | `OPEN` |
 | E3 | Is this a portfolio piece only, or a working document you intend to use? | `OPEN` |
-| E4 | Does your Obsidian vault contain governance material that should supersede any of this? | `OPEN` |
+| E4 | Does your Obsidian vault contain governance material that should supersede any of this? | `OPEN` — **vault still unreached.** But `PAIOS-CLAUDE-md-draft.md` recovered from Drive **does** supersede parts; see [Reconciliation §3](docs/reconciliation-with-paios.md) |
+| E5 | Should this repository be re-scoped as the PAIOS governance layer rather than a generic enterprise framework? | `OPEN` — recommended |
 
 ## F. Known coverage gaps — acknowledged, not planned
 

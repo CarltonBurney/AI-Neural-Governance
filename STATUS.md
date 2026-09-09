@@ -24,10 +24,12 @@ The following were requested and **could not be read**. This is an access limita
 | `PAIOS-Ramp-Up/remediation/external/PROGRESS.md` | Not found on this filesystem |
 | `vscode-handoff/CLAUDE-LOGIC-ERROR-REPORT.md` | Not found on this filesystem |
 | `C:/Users/paios/OneDrive/...` | **Windows path.** This container runs Ubuntu 24.04 on Linux 6.18. No `/mnt/c`, no Windows mount, no OneDrive access |
-| Obsidian vault | No access from this environment |
+| Obsidian vault | **Still no access.** Local Windows vault. The Drive folder named "Second Brain Archive" is *not* the vault — its manifest says it archives the `carltonburney/carltonburney` GitHub repo |
 | Other repositories, staging copies, recovered hosted sources | Not attached to this session |
 
-Referenced but unassessed elsewhere: 28 extracted Word documents, 21 preserved narratives, command-center and résumé code, recovered hosted repositories, SSL-monitor repairs, four n8n candidates. **None of these were visible to this session and none is evaluated here.**
+**Google Drive was subsequently searched and is accessible** (account `cjburney49@gmail.com`). Material recovered and reconciled — see [Reconciliation](docs/reconciliation-with-paios.md). Located but **not yet read**: `CURRENT_STATE_MATRIX_TEMPLATE.md`, `REPOSITORY_MAP_TEMPLATE.md`, `SYSTEM_BASELINE_TEMPLATE.md`, Command Center folder, `README_Threat_Assessment_Generator.md`, `MLG_Capital_Portfolio_v3_Structure.md`, `Master_Resume_Source_Document.md`, `3rd_party_integrations.txt`.
+
+Still not located: the 28 extracted Word documents and 21 preserved narratives as a distinct set; the four n8n candidates. Sibling repos (`PAIOS`, `Design-Group`, `ssl-certificate-monitor`) are **not attached to this session** and remain unassessed.
 
 To bring any of it into scope: push to a branch on an attached repository, or paste the content directly.
 
@@ -61,8 +63,9 @@ To bring any of it into scope: push to a branch on an attached repository, or pa
 | Diagrams render and are legible | **Verified** — all four inspected |
 | The framework demonstrates governance reasoning | **Supported** |
 | The framework has been operated | **NOT supported.** Nothing here has been used on a real system |
-| The author has operational governance experience | **NOT established by this repository.** See GAPS §A |
+| The author has operational governance experience | **Partially established — by external evidence, not by this repository.** Two governed Copilot Studio agents designed, configured and tested, with RBAC design, approval/escalation logic and negative-case acceptance testing. Characterized by its source as "tested and deployment-ready", sanitized, not bound to a client tenant. See [Reconciliation §4](docs/reconciliation-with-paios.md) |
 | The framework is compliant with the EU AI Act | **NOT established.** A mapping is not a conformity assessment |
 | The framework is adopted policy | **NO.** Every rule is a proposal until an organization adopts it |
 | This repository is production-ready | **NO** |
-| This represents the whole of the author's work | **NO — one repository only** |
+| This represents the whole of the author's work | **NO.** This is one repository within a wider programme (PAIOS, Design-Group, ssl-certificate-monitor, profile repo) |
+| This repository is scoped correctly | **NO — recommended re-scope.** It reads as a generic enterprise framework; it is actually the governance layer for PAIOS |
