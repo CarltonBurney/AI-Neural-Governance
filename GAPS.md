@@ -47,6 +47,8 @@ The framework currently assumes a mid-to-large enterprise with a Legal function,
 | B11 | `risk_level` in the §12 schema carries a risk vocabulary; the roster populates an autonomy vocabulary (L0-L2). Which resolution? See [Proposed Schema Mapping §4](docs/proposed-schema-mapping.md) | `OPEN` |
 | B12 | Do the two tested Copilot Studio agents (AXIS, M365 Assistant) map onto roster entries, or are they a separate set? | `OPEN` |
 | B13 | Are `approval_requirements` and `escalation_conditions` genuinely unpopulated, or populated in material not recovered? | `OPEN` |
+| B14 | **What is the seventh role-profile facet?** Owner confirmed 2026-09-09 that the source chapter lists seven; both handoff summaries name only six. **Not inferred — awaiting `05_PROFESSIONAL_PROFILE.md`** | `OPEN` — resolves on `source/vault-chapters` |
+| B15 | Do the other summary element counts hold against the chapters — request decision record (7 fields), human review triggers (5), adoption stages (4), roadmap (6 phases), governance chapters (12)? One confirmed under-count means none is settled | `OPEN` — verify each on receipt |
 
 ## C. Calibration — every threshold in the repo is a placeholder
 

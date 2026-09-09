@@ -32,6 +32,18 @@ Search 4 surfaced `2026-09-07` files in a folder not opened by this session, inc
 
 ---
 
+### Summary fidelity — confirmed lossy
+
+**Owner correction, 2026-09-09:** the role profile has **seven** facets. `Governance Source Brief.md` and `Reconciled Governance Model.md` both name six.
+
+This is a small error with a large consequence for how this repository reads its own sources. The summaries were the best material available and were treated as authoritative. One confirmed under-count establishes that **a curated summary can silently drop an element**, and `Governance Source Brief.md` says as much about the extraction itself: it *"does not reproduce images, page layout, headers, comments or tracked-change interpretation."*
+
+**Rule adopted:** where a summary states a count or enumerates a list, that count is *reported*, not verified, until checked against the chapter. Every such claim in this repository is now marked accordingly — see [GAPS](GAPS.md) B14–B15.
+
+The seventh facet is **not inferred**. It stays blank until the chapter is readable.
+
+---
+
 ## 2. Evidence grades
 
 The owner's rule, applied throughout:
@@ -63,7 +75,8 @@ The owner's rule, applied throughout:
 | `PAIOS_Universal_Governance_Layer_CrossPlatform.md` | 2026-05-17, `chatgpt_manual_export`, `status: ingested` | Strategy ideation | **Neither** |
 | `3rd_party_integrations.txt` | — | Meta llama-recipes dump | **Not PAIOS evidence** |
 | `paios_router.py`, `PAIOS_STARTUP.ps1` | 2026-05 | Files in Drive | **CODE** (existence only) |
-| **`Current Status - 2026-09-09.md`** | 2026-09-09 | **INACCESSIBLE** | **Unknown — likely supersedes status rows below** |
+| **`Current Status - 2026-09-09.md`** | 2026-09-09 | Owner-supplied; **verified byte-identical to the Drive export** | Status rows, current as of that date |
+| **Word chapters** (`04_NEURAL_GOVERNANCE.md` etc.) | 2026-09-07 extraction | **Pending on `source/vault-chapters`** | **The authority.** Summaries are lossy against them — see below |
 
 ---
 
