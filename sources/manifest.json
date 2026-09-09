@@ -1,0 +1,86 @@
+[
+  {
+    "file": "reconciled-word/01_THE_PROBLEM.md",
+    "sha256": "8c7e10984de0b0aa1b42258185584429ff02632abbcbbad7f496fa0ff09e8c30",
+    "original_word_source": "PAIOS_Documents_github_repo\\AI-Neural-Governance\\docs\\01_THE_PROBLEM.docx",
+    "original_word_sha256": "5f3ca5016842c495ea7daf70ac05e651fcba1ef66d43a9ba3ca9600188ba6fdd",
+    "evidence_kind": "historical-design-narrative"
+  },
+  {
+    "file": "reconciled-word/02_THE_PAIOS_SOLUTION.md",
+    "sha256": "2cd679c6c15a6b2791626cec531c8ce306f4aca1fd915a094101362d1b49432c",
+    "original_word_source": "PAIOS_Documents_github_repo\\AI-Neural-Governance\\docs\\02_THE_PAIOS_SOLUTION.docx",
+    "original_word_sha256": "9d696986978df70cc0e27036e95bb57f0fe621f194ef84798cf080a504b32735",
+    "evidence_kind": "historical-design-narrative"
+  },
+  {
+    "file": "reconciled-word/03_FOUR_PILLARS.md",
+    "sha256": "997e0347ea50e3ba3fada6e40b8bfa269f536dc1d570635b37fbd81080d5ffb6",
+    "original_word_source": "PAIOS_Documents_github_repo\\AI-Neural-Governance\\docs\\03_FOUR_PILLARS.docx",
+    "original_word_sha256": "057eb02239bdf9896be93c05fd384aae1304f983b8c4e3eabe167b4c32b08a90",
+    "evidence_kind": "historical-design-narrative"
+  },
+  {
+    "file": "reconciled-word/04_NEURAL_GOVERNANCE.md",
+    "sha256": "377b2b045990505090ec9fd328ad2b0cd5e9a0566af00d318cffccb0811d8105",
+    "original_word_source": "PAIOS_Documents_github_repo\\AI-Neural-Governance\\docs\\04_NEURAL_GOVERNANCE.docx",
+    "original_word_sha256": "49dcaf05dc7454c1582fed521c8c9cd555333f1e10caa58419f515c832b4430c",
+    "evidence_kind": "historical-design-narrative"
+  },
+  {
+    "file": "reconciled-word/05_PROFESSIONAL_PROFILE.md",
+    "sha256": "ee7fbee0fcd68ba349699216d5980e47b109a6c7f881791bd69c79a328e50e5a",
+    "original_word_source": "PAIOS_Documents_github_repo\\AI-Neural-Governance\\docs\\05_PROFESSIONAL_PROFILE.docx",
+    "original_word_sha256": "7d060740b57e2f3c5427fdfd2830650f97b7e454407f93b59bee5862ec180fb4",
+    "evidence_kind": "historical-design-narrative"
+  },
+  {
+    "file": "reconciled-word/06_ADOPTION_JOURNEY.md",
+    "sha256": "9d59a52c96d27270947fecb51d1a1b03fc5e2aaa62a7d7518d3860904270726b",
+    "original_word_source": "PAIOS_Documents_github_repo\\AI-Neural-Governance\\docs\\06_ADOPTION_JOURNEY.docx",
+    "original_word_sha256": "456214145e26353d2ff5dd569e983b15272f12ac13871cfbf8581d3c7048becc",
+    "evidence_kind": "historical-design-narrative"
+  },
+  {
+    "file": "reconciled-word/07_KNOWLEDGE_ARCHITECTURE.md",
+    "sha256": "6ee5e8956262dcf1cbee7179cd98eaec605257f534993ea199f49c14c66317e4",
+    "original_word_source": "PAIOS_Documents_github_repo\\AI-Neural-Governance\\docs\\07_KNOWLEDGE_ARCHITECTURE.docx",
+    "original_word_sha256": "d671f50b55f412debd031c4eb2d3687358bd1189e6ad26cf0bbba1246ca635d7",
+    "evidence_kind": "historical-design-narrative"
+  },
+  {
+    "file": "reconciled-word/08_HUMAN_IN_THE_LOOP.md",
+    "sha256": "0fcb646a1782026836d9288488659c1d1c6dca93953b48deebe08c989eb8bf71",
+    "original_word_source": "PAIOS_Documents_github_repo\\AI-Neural-Governance\\docs\\08_HUMAN_IN_THE_LOOP.docx",
+    "original_word_sha256": "b26b1cdfee1c7d2505f5bfce6e3ee966af7734a0d6116c5ca1a2b43db6750e51",
+    "evidence_kind": "historical-design-narrative"
+  },
+  {
+    "file": "reconciled-word/09_ENTERPRISE_USE_CASES.md",
+    "sha256": "b7ba984e4386a35c5ee9b9c2bfd70f2f7fa9a2bac82cb270040f0323d4e68997",
+    "original_word_source": "PAIOS_Documents_github_repo\\AI-Neural-Governance\\docs\\09_ENTERPRISE_USE_CASES.docx",
+    "original_word_sha256": "7478fbb71857275a5eb69d11912402dcdf4142af12c0fa3fa356f1ad077c6993",
+    "evidence_kind": "historical-design-narrative"
+  },
+  {
+    "file": "reconciled-word/10_IMPLEMENTATION_ROADMAP.md",
+    "sha256": "abfffa7c11713ee52ed2074e6f9e076958c1c37c6c327b2457776bdef125ab72",
+    "original_word_source": "PAIOS_Documents_github_repo\\AI-Neural-Governance\\docs\\10_IMPLEMENTATION_ROADMAP.docx",
+    "original_word_sha256": "c3e0955357e7485bb6dd42edbe5b9b77b547362f003f13dda2226e073b09be6f",
+    "evidence_kind": "historical-design-narrative"
+  },
+  {
+    "file": "reconciled-word/11_FUTURE_VISION.md",
+    "sha256": "95ac3418e20032da5b179de8cff819a0aaa22572a2c9930292fc130350c84df8",
+    "original_word_source": "PAIOS_Documents_github_repo\\AI-Neural-Governance\\docs\\11_FUTURE_VISION.docx",
+    "original_word_sha256": "d4d2a570868107557065d61bae158e0806ab0dd90c56249ecdfd6291fc212c7d",
+    "evidence_kind": "historical-design-narrative"
+  },
+  {
+    "file": "reconciled-word/README.md",
+    "sha256": "056246ca1318cba212b2bbaee4dc6031569c692663c34f9b0abe74fe19ee5164",
+    "original_word_source": "PAIOS_Documents_github_repo\\AI-Neural-Governance\\README.docx",
+    "original_word_sha256": "7369529f8897f57319a429424479fa4d5ebc9947861aceeb9cd821d166486629",
+    "evidence_kind": "historical-design-narrative"
+  }
+]

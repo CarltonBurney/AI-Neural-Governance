@@ -1,0 +1,146 @@
+[
+  {
+    "path": "agent-roster.json",
+    "sha256": "587bf62ae5fa980c6c0d7a04c6250bad97b25b66f25dc2192af59a6c30fc14c3"
+  },
+  {
+    "path": "manifest.json",
+    "sha256": "03d40ccc321f750255b77190d47724e1c318d7ba0e15c83e33e864224719c8f2"
+  },
+  {
+    "path": "README.md",
+    "sha256": "36c4db8bd95e4be91a98ce6aea9ddf24c013b5395524031fc05306c903b7d160"
+  },
+  {
+    "path": "reconciled-word/01_THE_PROBLEM.md",
+    "sha256": "8c7e10984de0b0aa1b42258185584429ff02632abbcbbad7f496fa0ff09e8c30"
+  },
+  {
+    "path": "reconciled-word/02_THE_PAIOS_SOLUTION.md",
+    "sha256": "2cd679c6c15a6b2791626cec531c8ce306f4aca1fd915a094101362d1b49432c"
+  },
+  {
+    "path": "reconciled-word/03_FOUR_PILLARS.md",
+    "sha256": "997e0347ea50e3ba3fada6e40b8bfa269f536dc1d570635b37fbd81080d5ffb6"
+  },
+  {
+    "path": "reconciled-word/04_NEURAL_GOVERNANCE.md",
+    "sha256": "377b2b045990505090ec9fd328ad2b0cd5e9a0566af00d318cffccb0811d8105"
+  },
+  {
+    "path": "reconciled-word/05_PROFESSIONAL_PROFILE.md",
+    "sha256": "ee7fbee0fcd68ba349699216d5980e47b109a6c7f881791bd69c79a328e50e5a"
+  },
+  {
+    "path": "reconciled-word/06_ADOPTION_JOURNEY.md",
+    "sha256": "9d59a52c96d27270947fecb51d1a1b03fc5e2aaa62a7d7518d3860904270726b"
+  },
+  {
+    "path": "reconciled-word/07_KNOWLEDGE_ARCHITECTURE.md",
+    "sha256": "6ee5e8956262dcf1cbee7179cd98eaec605257f534993ea199f49c14c66317e4"
+  },
+  {
+    "path": "reconciled-word/08_HUMAN_IN_THE_LOOP.md",
+    "sha256": "0fcb646a1782026836d9288488659c1d1c6dca93953b48deebe08c989eb8bf71"
+  },
+  {
+    "path": "reconciled-word/09_ENTERPRISE_USE_CASES.md",
+    "sha256": "b7ba984e4386a35c5ee9b9c2bfd70f2f7fa9a2bac82cb270040f0323d4e68997"
+  },
+  {
+    "path": "reconciled-word/10_IMPLEMENTATION_ROADMAP.md",
+    "sha256": "abfffa7c11713ee52ed2074e6f9e076958c1c37c6c327b2457776bdef125ab72"
+  },
+  {
+    "path": "reconciled-word/11_FUTURE_VISION.md",
+    "sha256": "95ac3418e20032da5b179de8cff819a0aaa22572a2c9930292fc130350c84df8"
+  },
+  {
+    "path": "reconciled-word/README.md",
+    "sha256": "056246ca1318cba212b2bbaee4dc6031569c692663c34f9b0abe74fe19ee5164"
+  },
+  {
+    "path": "recovery/PROGRESS-2026-09-07.md",
+    "sha256": "4b326401fe0c8b3a9df8a70f039395ff2a8d7f37fcc35ad2f777e6e6e1fc307a"
+  },
+  {
+    "path": "recovery/WORD-RECONCILIATION.md",
+    "sha256": "c05c41066c9dbb933b70fc6c213677efc442d2ecca8907bfdab2ae15ef0aba10"
+  },
+  {
+    "path": "vault-snapshot/.gitignore",
+    "sha256": "e01c8c9df597bab8722f70a647de2d2541bb62afd57408305171772d4738d3e5"
+  },
+  {
+    "path": "vault-snapshot/architecture/README.md",
+    "sha256": "3c3126d6fb08d2e1d88a051fb4d6e4b1c0ee6d40026a19bcc7b0ffc2c6d8548a"
+  },
+  {
+    "path": "vault-snapshot/docs/classification-framework.md",
+    "sha256": "bbae9d91382c6892020b24053de5cb489aaae8e22fdc5392d6235c337736dd52"
+  },
+  {
+    "path": "vault-snapshot/docs/governance-model.md",
+    "sha256": "b79846ebb08920ff16f0e48b153272e3f78b8588ab4264cce37d21ba4f5be3b8"
+  },
+  {
+    "path": "vault-snapshot/docs/human-in-the-loop.md",
+    "sha256": "74fef585fb1582e3f0f8491be9773e760740058a777d9cb66af6b88ca4504cce"
+  },
+  {
+    "path": "vault-snapshot/docs/README.md",
+    "sha256": "51c2ac7e8db58b7ed917af8fce25640734ecc270f8c14586ff951ebccf233b23"
+  },
+  {
+    "path": "vault-snapshot/docs/reconciled-word/01_THE_PROBLEM.md",
+    "sha256": "8c7e10984de0b0aa1b42258185584429ff02632abbcbbad7f496fa0ff09e8c30"
+  },
+  {
+    "path": "vault-snapshot/docs/reconciled-word/02_THE_PAIOS_SOLUTION.md",
+    "sha256": "2cd679c6c15a6b2791626cec531c8ce306f4aca1fd915a094101362d1b49432c"
+  },
+  {
+    "path": "vault-snapshot/docs/reconciled-word/03_FOUR_PILLARS.md",
+    "sha256": "997e0347ea50e3ba3fada6e40b8bfa269f536dc1d570635b37fbd81080d5ffb6"
+  },
+  {
+    "path": "vault-snapshot/docs/reconciled-word/04_NEURAL_GOVERNANCE.md",
+    "sha256": "377b2b045990505090ec9fd328ad2b0cd5e9a0566af00d318cffccb0811d8105"
+  },
+  {
+    "path": "vault-snapshot/docs/reconciled-word/05_PROFESSIONAL_PROFILE.md",
+    "sha256": "ee7fbee0fcd68ba349699216d5980e47b109a6c7f881791bd69c79a328e50e5a"
+  },
+  {
+    "path": "vault-snapshot/docs/reconciled-word/06_ADOPTION_JOURNEY.md",
+    "sha256": "9d59a52c96d27270947fecb51d1a1b03fc5e2aaa62a7d7518d3860904270726b"
+  },
+  {
+    "path": "vault-snapshot/docs/reconciled-word/07_KNOWLEDGE_ARCHITECTURE.md",
+    "sha256": "6ee5e8956262dcf1cbee7179cd98eaec605257f534993ea199f49c14c66317e4"
+  },
+  {
+    "path": "vault-snapshot/docs/reconciled-word/08_HUMAN_IN_THE_LOOP.md",
+    "sha256": "0fcb646a1782026836d9288488659c1d1c6dca93953b48deebe08c989eb8bf71"
+  },
+  {
+    "path": "vault-snapshot/docs/reconciled-word/09_ENTERPRISE_USE_CASES.md",
+    "sha256": "b7ba984e4386a35c5ee9b9c2bfd70f2f7fa9a2bac82cb270040f0323d4e68997"
+  },
+  {
+    "path": "vault-snapshot/docs/reconciled-word/10_IMPLEMENTATION_ROADMAP.md",
+    "sha256": "abfffa7c11713ee52ed2074e6f9e076958c1c37c6c327b2457776bdef125ab72"
+  },
+  {
+    "path": "vault-snapshot/docs/reconciled-word/11_FUTURE_VISION.md",
+    "sha256": "95ac3418e20032da5b179de8cff819a0aaa22572a2c9930292fc130350c84df8"
+  },
+  {
+    "path": "vault-snapshot/docs/reconciled-word/README.md",
+    "sha256": "056246ca1318cba212b2bbaee4dc6031569c692663c34f9b0abe74fe19ee5164"
+  },
+  {
+    "path": "vault-snapshot/README.md",
+    "sha256": "1f98957d0231b6b274eb2e2ca1099c2380ae7cae5a7be223c96064585f9abfa5"
+  }
+]
