@@ -37,6 +37,7 @@ The framework currently assumes a mid-to-large enterprise with a Legal function,
 | B1 | What size and type of organization is this framework written for? A 200-person company cannot staff a Council with five functions. | `OPEN` |
 | B2 | Which industry / platform? | **`CLOSED`** — Microsoft 365 ecosystem: Copilot Studio, Power Platform, Azure, Graph, Entra ID, Dataverse. Framework should be re-scoped accordingly |
 | B3 | Which jurisdictions? The framework is EU-anchored. US state law, UK, and Canada are not covered. | `OPEN` |
+| B16 | **What is the relationship between `EklektikSole` and `Design Group MN`?** The source document attributes PAIOS to Design Group MN; the owner states EklektikSole is the legal entity. Assumed name / DBA, separate entity, or brand? Also unresolved: entity type, whether it is registered with the MN Secretary of State, and which name the EIN is held under | `OPEN` — blocks every funding and certification route |
 | B4 | Provider or deployer? | **`PARTIAL`** — PAIOS is built by Design Group MN (provider posture) but orchestrates third-party models (deployer posture). Both apply; needs splitting per component |
 | B5 | Does an existing model risk management function (e.g. SR 11-7) already exist that this should integrate with rather than duplicate? | `OPEN` |
 | B6 | Is there an existing risk taxonomy or severity scale this should align to instead of introducing its own? | **`PARTIAL`** — `risk_level` exists in the PAIOS agent-definition schema; values not yet seen |

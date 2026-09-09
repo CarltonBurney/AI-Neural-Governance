@@ -24,7 +24,7 @@ This file records what was found, what it changes, and where the author's own do
 Previously unstated, now established from source: this framework is not a generic enterprise artifact. It is **the governance layer for PAIOS**.
 
 - **PAIOS** = **Personal AI Orchestration System** — *not* "AI Operating System"; the source is explicit that "OS" means Orchestration System
-- Developed by **Design Group MN**
+- Source attributes development to **Design Group MN** (`PAIOS-CLAUDE-md-draft.md`). **Owner correction, 2026-09-09: the legal entity is `EklektikSole`.** The relationship between the two names — assumed name, separate entity, or project label — is **unresolved**; see [GAPS](../GAPS.md) B16. This matters beyond naming: awards, certifications and registrations are made to the legal entity, and SAM.gov requires the legal name to match IRS records exactly
 - Cloud-first, governance-driven, centered initially on **Microsoft 365** — Copilot Studio, Power Platform, Azure, Microsoft Graph, Entra ID, Dataverse
 - Sibling repositories: `PAIOS`, `Design-Group`, `ssl-certificate-monitor`, `carltonburney/carltonburney`
 - PAIOS coordinates language models; **it is not itself a model**
