@@ -1,5 +1,7 @@
 # Current Handoff — 2026-09-03
 
+> ⚠ **UNVERIFIED DRAFT — reconciliation halted 2026-09-09.** Built on Google Drive material the owner has identified as **not the intended source**. The intended folder ("Shared AI Handoff") could not be accessed by this session. Do not rely on this document. See [UNVERIFIED-DRAFT.md](../UNVERIFIED-DRAFT.md).
+
 Source: Google Drive → **Command Center**, shared by `paios.infinity@gmail.com`, 2026-09-03. This is the most recent PAIOS material found and it **supersedes earlier direction**.
 
 > *"This supersedes the earlier 'development on hold' language for this pipeline."* — `VSCODE-START-HERE.md`

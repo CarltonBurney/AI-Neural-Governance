@@ -1,5 +1,7 @@
 # PROPOSED — Governance-to-Agent-Schema Mapping
 
+> ⚠ **UNVERIFIED DRAFT — reconciliation halted 2026-09-09.** Built on Google Drive material the owner has identified as **not the intended source**. The intended folder ("Shared AI Handoff") could not be accessed by this session. Do not rely on this document. See [UNVERIFIED-DRAFT.md](../UNVERIFIED-DRAFT.md).
+
 > **Status: PROPOSED. Not adopted, not implemented, not tested.**
 >
 > This mapping remains a proposal until it is implemented in Copilot Studio **and** its enforcement is tested — that is, until a test demonstrates the platform actually *refuses* what the schema *declares* prohibited. A field that carries a value but changes no behavior is documentation, not a control.

@@ -1,5 +1,8 @@
 # Open Gaps
 
+> ⚠ **B10–B13 are unverified** — all four derive from `agent-roster.md` in the September 3 Command Center folder, which the owner has identified as not the intended source. See [UNVERIFIED-DRAFT.md](UNVERIFIED-DRAFT.md).
+
+
 **Questions this framework cannot answer from public sources.** Each one is a place where content was deliberately left open rather than filled with plausible invention.
 
 **Updated 2026-09-09** after recovering source material from Google Drive — see [Reconciliation](docs/reconciliation-with-paios.md). Several items moved to `PARTIAL` or `CLOSED`.

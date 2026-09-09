@@ -1,5 +1,7 @@
 # Component Evidence
 
+> ⚠ **PARTIALLY UNVERIFIED.** The B8 closure and the 2026-05 `PAIOS_GOVERNANCE.md` rows are independently sourced and stand. Rows citing the September 3 Command Center material are **unverified** — that folder is not the owner's intended source, and a `Current Status - 2026-09-09.md` exists which this session could not access. See [UNVERIFIED-DRAFT.md](../UNVERIFIED-DRAFT.md).
+
 Answers **GAPS B8 and B9 from sources**, not from the owner's memory. Every row cites where the evidence came from and how strong it is.
 
 **Evidence classes:** `SOURCE-STATED` — an owner-authored document asserts it · `SOURCE-DATED` — asserted, with a date that may have moved on · `INFERRED` — my reading, contestable · `NOT FOUND` — searched, no evidence either way · `NOT INSPECTED` — exists but this session cannot reach it
