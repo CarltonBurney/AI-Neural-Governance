@@ -1,6 +1,6 @@
 # Status
 
-> ⚠ **Partially unverified** — claims sourced from the September 3 Command Center folder are suspect; that folder is not the owner's intended handoff source. See [UNVERIFIED-DRAFT.md](UNVERIFIED-DRAFT.md).
+> **Source-graded.** Status rows carry dates and evidence grades; see [Sources and Access](SOURCES-AND-ACCESS.md). A `Current Status - 2026-09-09.md` was **not accessible** to this session and may supersede current-state rows.
 
 
 Uses the author's own templates recovered from Google Drive — `CURRENT_STATE_MATRIX_TEMPLATE.md`, `REPOSITORY_MAP_TEMPLATE.md`, `SYSTEM_BASELINE_TEMPLATE.md` — rather than a competing format. Their instruction is adopted verbatim:

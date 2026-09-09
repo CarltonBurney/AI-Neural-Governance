@@ -1,6 +1,6 @@
 # PROPOSED — Governance-to-Agent-Schema Mapping
 
-> ⚠ **UNVERIFIED DRAFT — reconciliation halted 2026-09-09.** Built on Google Drive material the owner has identified as **not the intended source**. The intended folder ("Shared AI Handoff") could not be accessed by this session. Do not rely on this document. See [UNVERIFIED-DRAFT.md](../UNVERIFIED-DRAFT.md).
+> **PROPOSED — unchanged in status.** Built on `agent-roster.md` (2026-09-03), which is **documented intent**: its own header states *"Definitions only; no live agents are asserted."* That is the appropriate basis for a proposal and does not establish that anything is enforced. A `Current Status - 2026-09-09.md` was **not accessible** to this session and may revise the roster. See [Sources and Access](../SOURCES-AND-ACCESS.md).
 
 > **Status: PROPOSED. Not adopted, not implemented, not tested.**
 >

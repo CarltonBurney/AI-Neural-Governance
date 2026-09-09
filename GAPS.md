@@ -1,6 +1,6 @@
 # Open Gaps
 
-> ⚠ **B10–B13 are unverified** — all four derive from `agent-roster.md` in the September 3 Command Center folder, which the owner has identified as not the intended source. See [UNVERIFIED-DRAFT.md](UNVERIFIED-DRAFT.md).
+> **B10–B13 derive from `agent-roster.md` (2026-09-03)** — documented intent, and background rather than the current handoff. A `Current Status - 2026-09-09.md` was not accessible to this session. See [Sources and Access](SOURCES-AND-ACCESS.md).
 
 
 **Questions this framework cannot answer from public sources.** Each one is a place where content was deliberately left open rather than filled with plausible invention.
@@ -19,8 +19,8 @@ The three [worked examples](examples/) are teaching scenarios. Real experience, 
 
 | # | Question | Status |
 |---|---|---|
-| A1 | Have you governed, reviewed, or advised on an AI or automated decision system? | **`PARTIAL`** — Copilot Studio Capability Evidence: two governed agents (AXIS; M365 Knowledge & Workflow Assistant) designed, configured, tested. See [Reconciliation §4](docs/reconciliation-with-paios.md). Still open: any work in a client tenant |
-| A2 | Have you built or operated an intake, classification, or approval process? | **`PARTIAL`** — evidenced: approval/escalation logic, release gated on technical/security/knowledge-owner/process-owner/business approval, solution-based ALM promotion. Still open: whether this ran for a third party |
+| A1 | Have you governed, reviewed, or advised on an AI or automated decision system? | **`PARTIAL — owner-reported`** — a capability document describes two governed Copilot Studio agents. **Downgraded 2026-09-09:** the status records *"Owner reports prior AXIS and Microsoft 365 assistant work. Actual source work/school environment and exports needed; personal sign-in attempt failed."* Evidence pending export |
+| A2 | Have you built or operated an intake, classification, or approval process? | **`PARTIAL — owner-reported`** — described in the capability document; same export dependency as A1. **Separately: the Reconciled Governance Model supplies a seven-field request decision record** which is existing owner material, not a gap |
 | A3 | Have you had to tell a delivery team their use case was riskier than they had scoped it? What happened? | `OPEN` |
 | A4 | Have you dealt with a vendor changing a product's behavior under an existing approval, or shipping a capability nobody signed off? | `OPEN` |
 | A5 | Have you seen a control that existed on paper but was not actually operating? | `OPEN` — though the AXIS acceptance set tests for "claim an unexecuted deployment succeeded", implying the concern is already yours |

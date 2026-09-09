@@ -1,6 +1,6 @@
 # Component Evidence
 
-> ⚠ **PARTIALLY UNVERIFIED.** The B8 closure and the 2026-05 `PAIOS_GOVERNANCE.md` rows are independently sourced and stand. Rows citing the September 3 Command Center material are **unverified** — that folder is not the owner's intended source, and a `Current Status - 2026-09-09.md` exists which this session could not access. See [UNVERIFIED-DRAFT.md](../UNVERIFIED-DRAFT.md).
+> **Evidence-graded.** Every row below carries a source, a date and a grade — INTENT / CLAIM / CODE / TEST / NONE. **This session verified no PAIOS implementation directly**; no PAIOS repository is attached and no code was read or run. A `Current Status - 2026-09-09.md` was **not accessible** and may supersede status rows. See [Sources and Access](../SOURCES-AND-ACCESS.md).
 
 Answers **GAPS B8 and B9 from sources**, not from the owner's memory. Every row cites where the evidence came from and how strong it is.
 
@@ -49,18 +49,21 @@ Both require the owner's confirmation or rejection. Neither should be treated as
 
 `PAIOS_GOVERNANCE.md` (Drive), YAML front matter `status: ACTIVE`, `phase: 2`, `updated: 2026-05-07`, under the heading **"Current Reality (May 2026)"**.
 
-| Component | Source-stated status | Class | Date | Note |
+| Component | Owner-stated status | Date | Grade | Independent evidence available to this session |
 |---|---|---|---|---|
-| Voice module | **WORKING** (mic upgrade pending) | `SOURCE-DATED` | 2026-05 | |
-| **PAIOS Router** | **LIVE** — Claude, ChatGPT, Grok active | `SOURCE-DATED` | 2026-05 | `paios_router.py` present in Drive, 6.2 KB, modified 2026-05-24 |
-| **n8n** | **INSTALLED — 3 workflows live** | `SOURCE-DATED` | 2026-05 | Resolves the "n8n candidates" question: installed, not hypothetical |
-| **Obsidian** | **WIRED — Local REST API active** | `SOURCE-DATED` | 2026-05 | Obsidian is an integrated governed data source, not a personal notebook |
-| YAML metadata | ADDED to all core files | `SOURCE-DATED` | 2026-05 | Visible in the recovered files |
-| ChatGPT | SYNCED via context file | `SOURCE-DATED` | 2026-05 | |
-| Grok | ACTIVE | `SOURCE-DATED` | 2026-05 | |
-| Perplexity | **PENDING KEY** | `SOURCE-DATED` | 2026-05 | **Superseded** — see below |
-| Daveed AI | PENDING | `SOURCE-DATED` | 2026-05 | |
-| Copilot | **PENDING AUDIT** | `SOURCE-DATED` | 2026-05 | |
+| Voice module | WORKING (mic upgrade pending) | 2026-05 | **CLAIM** | None |
+| **PAIOS Router** | LIVE — Claude, ChatGPT, Grok active | 2026-05 | **CLAIM + CODE** | `paios_router.py` exists in Drive, 6.2 KB, modified 2026-05-24. **Existence only — not read, not run** |
+| **n8n** | INSTALLED — 3 workflows live | 2026-05 | **CLAIM** | None. September 3 says *"if its actual installation is available"* — non-committal. See [conflict 4.1](../SOURCES-AND-ACCESS.md) |
+| **Obsidian** | WIRED — Local REST API active | 2026-05 | **CLAIM** | None. Corroborated as *intent* by the roster's `knowledge_curator` scoping "Allowlisted Obsidian notes" |
+| YAML metadata | ADDED to all core files | 2026-05 | **CLAIM + CODE** | Front matter is present in recovered files — directly observed |
+| ChatGPT | SYNCED via context file | 2026-05 | **CLAIM** | None |
+| Grok | ACTIVE | 2026-05 | **CLAIM** | None |
+| Perplexity | PENDING KEY | 2026-05 | **CLAIM** | Superseded on this row by 2026-09-03 — see below |
+| Daveed AI | PENDING | 2026-05 | **CLAIM** | None |
+| Copilot | PENDING AUDIT | 2026-05 | **CLAIM** | None |
+| `PAIOS_STARTUP.ps1` / `Register_PAIOS_Startup.ps1` | — | 2026-05 | **CODE** | Files exist, 6.9 / 4.5 KB. Indicate a Windows startup-registered service. **Not read** |
+
+**No row above is verified by this session.** "CLAIM" means the owner asserted it in a dated document; "CODE" means a file that would implement it exists in Drive and was not inspected. Per the owner's rule, implementation requires code or test evidence — only the router, the YAML metadata and the startup scripts have any, and in two cases that is file existence alone.
 
 **Phase tracker (2026-05):** Phase 1 Foundation **COMPLETE** · Phase 2 Operational Brain **ACTIVE** · Phase 3 Agentic Workflows **IN PROGRESS** · Phase 4 Full PAIOS **NOT STARTED**
 
@@ -84,9 +87,9 @@ The owner states the **Command Center**, **résumé generator**, and **SSL monit
 
 | Component | Status | Class |
 |---|---|---|
-| Command Center | Local validation recorded by owner. Drive folder exists with handoff artifacts | `NOT INSPECTED` |
-| Résumé generator | Local validation recorded by owner. `Master_Resume_Source_Document.md` in Drive | `NOT INSPECTED` |
-| SSL monitor | Local validation recorded by owner. `ssl-certificate-monitor` repo not attached | `NOT INSPECTED` |
+| Command Center | *".NET build and browser navigation/health tests passed"* — but *"three agent panels remain simulations; no complete agent workflow demonstrated"* (2026-09-09) | `NOT INSPECTED` — owner test record |
+| Résumé generator | *"Corrected identity/summary handling; four regression tests passed"* (2026-09-09). Not part of the shared packet | `NOT INSPECTED` — owner test record |
+| SSL monitor | *"Input/report defects fixed; four tests and a live TLS inspection recorded"* (2026-09-09). **Not yet connected to the command centre** | `NOT INSPECTED` — owner test record |
 | `PAIOS_STARTUP.ps1`, `Register_PAIOS_Startup.ps1` | Present in Drive (6.9 KB / 4.5 KB) — indicates a Windows startup-registered service | `SOURCE-STATED` |
 
 **These are built and locally validated per the owner, and are distinct from the deferred local-model stack.** The deferral in `GAPS` B7 concerns the *local LLM/vector* architecture awaiting hardware — **not** this existing local software.
