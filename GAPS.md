@@ -38,8 +38,12 @@ The framework currently assumes a mid-to-large enterprise with a Legal function,
 | B5 | Does an existing model risk management function (e.g. SR 11-7) already exist that this should integrate with rather than duplicate? | `OPEN` |
 | B6 | Is there an existing risk taxonomy or severity scale this should align to instead of introducing its own? | **`PARTIAL`** — `risk_level` exists in the PAIOS agent-definition schema; values not yet seen |
 | B7 | Two architectures found — relationship? | **`CLOSED` (author, 2026-09-09):** Stack B is a **separate design level**, to be built when the author's equipment can support a local build. Neither supersedes the other. Stack A (Microsoft 365, cloud-first) is the **active path**; Stack B is **deferred design pending hardware** |
-| B8 | Stack B has **Purpose Binding** and **deny precedence** in policy evaluation. Neither is in this framework. Where are they specified? | `OPEN` — design-level concepts. Governance-layer constructs are **portable across both stacks**, so these should inform this framework now, not wait on hardware |
-| B9 | Does any Stack B code exist yet, or is it entirely design-level pending hardware? The `CURRENT_STATE_MATRIX` template enumerates components as though tracked — are those built, partially built, or planned? | `OPEN` |
+| B8 | Purpose Binding and deny precedence — where specified? | **`CLOSED by source review`** — they appear **only as unfilled fields** in `SYSTEM_BASELINE_TEMPLATE.md`. Drive full-text search found no definition. Proposed definitions offered in [Component Evidence](docs/component-evidence.md), clearly marked as proposals |
+| B9 | Which components are built? | **`CLOSED by source review`** — classified per component with evidence class and date in [Component Evidence](docs/component-evidence.md). Router LIVE, n8n INSTALLED with 3 workflows, Obsidian WIRED (2026-05); Perplexity dashboard working (2026-09). Command Center, résumé generator and SSL monitor are **built and locally validated per the owner**, distinct from the deferred local-model stack |
+| B10 | Are the L0/L1/L2 ceilings defined anywhere, or only implied by the 17 roster entries? [Handoff §3](docs/current-handoff-2026-09-03.md) infers a pattern — read/report, draft-for-review, bounded-operational-request — but the source does not state it | `OPEN` |
+| B11 | `risk_level` in the §12 schema carries a risk vocabulary; the roster populates an autonomy vocabulary (L0-L2). Which resolution? See [Proposed Schema Mapping §4](docs/proposed-schema-mapping.md) | `OPEN` |
+| B12 | Do the two tested Copilot Studio agents (AXIS, M365 Assistant) map onto roster entries, or are they a separate set? | `OPEN` |
+| B13 | Are `approval_requirements` and `escalation_conditions` genuinely unpopulated, or populated in material not recovered? | `OPEN` |
 
 ## C. Calibration — every threshold in the repo is a placeholder
 
