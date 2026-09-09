@@ -33,7 +33,9 @@ Prepared to the format in `Review Instructions.md`. **Proposed changes, not adop
 
 ## 2. Handoff snapshot used, and sources inaccessible
 
-**Snapshot used: 2026-09-09**, received as owner-pasted text.
+**Snapshot used: 2026-09-09.** Received first as owner-pasted text, then **confirmed against a Drive export** the owner uploaded (`drivedownload-20260909T180831Z-1-001.zip`). The three standalone files in that export are byte-identical to the pasted text (3,068 / 3,715 / 2,639 bytes); the consolidated `PAIOS Handoff Packet - 2026-09-09.md` carries all six source documents. The pasted snapshot is therefore verified, not assumed.
+
+**Still outstanding after that export:** none of the eight files requested in `2026-09-09 - claude - file request - governance vault chapters.md` were included. The export is the handoff folder, not the governance vault.
 
 **Inaccessible to this session:**
 
