@@ -36,7 +36,9 @@ The framework currently assumes a mid-to-large enterprise with a Legal function,
 | B3 | Which jurisdictions? The framework is EU-anchored. US state law, UK, and Canada are not covered. | `OPEN` |
 | B4 | Provider or deployer? | **`PARTIAL`** — PAIOS is built by Design Group MN (provider posture) but orchestrates third-party models (deployer posture). Both apply; needs splitting per component |
 | B5 | Does an existing model risk management function (e.g. SR 11-7) already exist that this should integrate with rather than duplicate? | `OPEN` |
-| B6 | Is there an existing risk taxonomy or severity scale this should align to instead of introducing its own? | `OPEN` |
+| B6 | Is there an existing risk taxonomy or severity scale this should align to instead of introducing its own? | **`PARTIAL`** — `risk_level` exists in the PAIOS agent-definition schema; values not yet seen |
+| B7 | **Two architectures were found.** Stack A is Microsoft 365 (Copilot Studio, Dataverse, Azure). Stack B is local-first (Ollama, Postgres/SQLite, ChromaDB/Qdrant, Command Center / Agent Lab). Does one supersede the other, are they layers of one system, or are they separate projects? | `OPEN` — **blocks correct scoping of this repository** |
+| B8 | Stack B has **Purpose Binding** and **deny precedence** in policy evaluation. Neither is in this framework and both look stronger than what is here. Where are they specified? | `OPEN` |
 
 ## C. Calibration — every threshold in the repo is a placeholder
 
